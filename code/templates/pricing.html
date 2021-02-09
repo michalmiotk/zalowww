@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block tab_content %}
+    Cennik 
+{% endblock %}
+
+{% block page_content %}
+    {% load static  %}
+    <link rel="stylesheet" href="{% static 'pricing/pricing.css' %}"/>
+    <table class="table table-sm table-dark">
+        <thead>
+            <tr class="bg-success">
+                <th>Nazwa usługi</th>
+                <th>przybliżona cena</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="bg-danger">
+                <th>wymiana opony</th>
+                <th>25zł</th>
+            </tr>
+            <tr class="bg-info">
+                <th>wymiana dętki</th>
+                <th>25zł</th>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
