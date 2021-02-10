@@ -19,4 +19,4 @@ def product_list(request):
         'current_order_products': current_order_products
     }
 
-    return render(request, "products/products_list.html", context)
+    return render(request, "products/product_list.html", context)
