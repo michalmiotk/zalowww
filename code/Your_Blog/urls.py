@@ -18,14 +18,27 @@ from django.urls import path
 from home.views import home_view, read_article
 from about.views import about_view
 from pricing.views import pricing_view
+from shopping_cart.views import add_to_cart, order_details, delete_from_cart,delete_from_cart
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from products.urls import product_urlpatterns
+from login.views import login_gui, login_machine
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_view),
+    path('', home_view, name="home"),
     path('<str:slug>', read_article),
     path('pricing/', pricing_view),
     path('about/', about_view),
+    path(r'^add-to-cart/(?P<item_id>[-\w]+)/$', add_to_cart, name="add_to_cart"),
+    path(r'^order-summary/$', order_details, name="order_summary"),
+    #path(r'^success/$', success, name='purchase_success'),
+    path(r'^item/delete/(?P<item_id>[-\w]+)/$', delete_from_cart, name='delete_item'),
+    path(r'login/',login_gui),
+    path(r'login_machine/', login_machine)
+    #path(r'^checkout/$', checkout, name='checkout'),
+    #path(r'^payment/(?P<order_id>[-\w]+/)$', process_payment, name="process_payment"),
+    #path(r'^update-transaction/(?P<order_id>[-\w]+)/$', update_transaction_records, name='update_records'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
+urlpatterns.extend(product_urlpatterns)
