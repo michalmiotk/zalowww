@@ -6,16 +6,16 @@ from django.contrib import messages
 # Create your views here.
 def register_view(request):
     if request.method == 'POST':
-        form = UserCreationForm()
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             print("udalo sie")
             form.save()
             username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data('password1')
+            raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
             messages.success(request, f'Account created for {username}!')
-            return redirect("login_success.html")
+            return redirect("home")
     else:
         print("nie udalo sie1")
         form = UserCreationForm()

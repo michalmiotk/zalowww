@@ -27,6 +27,7 @@ from my_register.views import register_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view, name="home"),
+    path('$', home_view, name="home"),
     path('<str:slug>', read_article),
     path('pricing/', pricing_view),
     path('about/', about_view),

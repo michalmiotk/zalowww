@@ -1,5 +1,6 @@
 import random
 import string
+import datetime
 from datetime import date
 
 from shopping_cart.models import OrderItem
