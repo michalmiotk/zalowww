@@ -22,6 +22,7 @@ from shopping_cart.views import add_to_cart, order_details, delete_from_cart,del
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from products.urls import product_urlpatterns
 from login.views import login_gui, login_machine
+from my_register.views import register_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,6 +38,7 @@ urlpatterns = [
     path(r'login_machine/', login_machine),
     path(r'^checkout/$', checkout, name='checkout'),
     path(r'^payment/(?P<order_id>[-\w]+/)$', payment, name="process_payment"),
+    path('register/', register_view, name="register_view"),
     #path(r'^update-transaction/(?P<order_id>[-\w]+)/$', update_transaction_records, name='update_records'),
 ]
 

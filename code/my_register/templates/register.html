@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block tab_content %}
+    Formularz rejestracji
+{% endblock %}
+{% block page_content %}
+
+    <form method="POST" class="form-group">
+        {% csrf_token %}
+        {{ form }}
+        <br>
+        <button type="submit" class="btn btn-success" >Zarejestruj</button>
+    </form>
+{% endblock %}
