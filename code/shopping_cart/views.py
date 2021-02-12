@@ -5,6 +5,7 @@ from shopping_cart.models import OrderItem, Order
 from shopping_cart.extras import  generate_order_id
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.template.defaulttags import register
 # Create your views here.
 def get_user_pending_order(request):
     user_profile = get_object_or_404(Profile, user=request.user)
@@ -19,12 +20,21 @@ def add_to_cart(request, **kwargs):
     print("kwargs", kwargs)
     print("request",  request, request.user)
     user_profile = get_object_or_404(Profile, user=request.user)
-    print("user_profile", user_profile)
-    
+    if not user_profile:
+        if not request.session.get(product.name):
+            request.session[product.name] = 1
+        else: 
+            request.session[product.name] += 1
+        print("w sesji ilość przedmiotów {} to {}".format(product.name, request.session[product.name]))
+        print("w sesji ilość przedmiotów {} to {}".format('coca cola', request.session['coca cola']))
+        print("user_profile", user_profile)
+        return redirect(reverse('product-list'))
+
     product = Product.objects.filter(id=kwargs.get('item_id', "")).first()
     print("request.user.profile.ebooks", request.user.profile.ebooks.all())
     if product in request.user.profile.ebooks.all():
-        messages.info(request, "You already own this ebook")
+        request.user.profile.ebooks[product.name][0].quantity += 1
+        messages.info(request, "Added one more item")
         return redirect(reverse('product-list'))
     
     order_item, status = OrderItem.objects.get_or_create(product=product)
@@ -36,6 +46,7 @@ def add_to_cart(request, **kwargs):
         user_order.save()
     user_profile.ebooks.add(product)
     messages.info(request, "item added to cart")
+    
     return redirect(reverse('product-list'))
 
 @login_required
@@ -67,3 +78,10 @@ def payment(request, order_id):
         'order_id' : order_id
     }
     return render(request, 'shopping_cart/payment.html', context)
+
+'''
+@register.TEMPLATES
+def get_item_number(dictionary, key):
+    print("wypluje", dictionary.get(key)[0].quantity)
+    return dictionary.get(key)[0].quantity
+'''

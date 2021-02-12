@@ -9,11 +9,11 @@
                 {% if not user  %}
                     Zaloguj się aby dodać przedmiot do koszyka
                 {% endif %}
-                {% if user and object in user.profile.ebooks.all %}
-                        You own this 
-                {% else %}
-                <a href="{% url 'add_to_cart' object.id %}" class="btn btn-warning">Add to Cart</a>
+                {% if user and user.profile and object in user.profile.ebooks.all %}
+                        W koszyku {{ user.profile.ebooks.all }}sztuk 
                 {% endif %}
+                <a href="{% url 'add_to_cart' object.id %}" class="btn btn-warning">Add to Cart</a>
+                
             </div>
         {% endfor %}
     </div>
