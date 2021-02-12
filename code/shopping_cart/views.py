@@ -15,7 +15,7 @@ def get_user_pending_order(request):
 
 @login_required()
 def add_to_cart(request, **kwargs):
-    messages.info(request, "dooooo")
+    messages.info(request, "dodano przedmiot do koszyka")
     print("kwargs", kwargs)
     print("request",  request, request.user)
     user_profile = get_object_or_404(Profile, user=request.user)
