@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Koszyk na zakupy
+{% endblock %}
+
+{% block page_content %}
+    <h1>Koszyk na zakupy</h1>
+    <table class="cart">
+        <thead>
+            <tr>
+                <th>Produkt</th>
+                <th>Ilosc</th>
+                <th>Cena jednostkowa</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart %}
+                {% with product=item.product %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.price }}</td>
+                    </tr>
+                {% endwith %}
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

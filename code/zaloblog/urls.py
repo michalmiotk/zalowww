@@ -18,7 +18,7 @@ from django.urls import path
 from home.views import home_view, read_article
 from about.views import about_view
 from pricing.views import pricing_view
-from shopping_cart.views import cart_add, order_details, delete_from_cart,delete_from_cart,checkout, payment
+from shopping_cart.views import cart_add, cart_detail, order_details, delete_from_cart,delete_from_cart,checkout, payment
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from products.urls import product_urlpatterns
 from login.views import login_gui, login_machine, my_logout
@@ -31,6 +31,7 @@ urlpatterns = [
     path('<str:slug>', read_article),
     path('pricing/', pricing_view),
     path('about/', about_view),
+    path('cart_detail/', cart_detail, name='cart_detail'),
     path(r'^add-to-cart/(?P<item_id>\d+)/$', cart_add, name="cart_add"),
     path(r'^order-summary/$', order_details, name="order_summary"),
     #path(r'^success/$', success, name='purchase_success'),

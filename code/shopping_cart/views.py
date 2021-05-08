@@ -22,6 +22,10 @@ def cart_add(request, item_id):
             quantity=cd['quantity'],
             update_quantity=cd['update'])
     return redirect(reverse('product-list'))
+
+def cart_detail(request):
+    cart = Cart(request)
+    return render(request, 'shopping_cart/detail.html', {'cart': cart})
     
 # Create your views here.
 def get_user_pending_order(request):
@@ -31,40 +35,7 @@ def get_user_pending_order(request):
         return order[0]
     return 0
 
-@login_required()
-def add_to_cart(request, **kwargs):
-    messages.info(request, "dodano przedmiot do koszyka")
-    print("kwargs", kwargs)
-    print("request",  request, request.user)
-    user_profile = get_object_or_404(Profile, user=request.user)
-    if not user_profile:
-        if not request.session.get(product.name):
-            request.session[product.name] = 1
-        else: 
-            request.session[product.name] += 1
-        print("w sesji ilość przedmiotów {} to {}".format(product.name, request.session[product.name]))
-        print("w sesji ilość przedmiotów {} to {}".format('coca cola', request.session['coca cola']))
-        print("user_profile", user_profile)
-        return redirect(reverse('product-list'))
 
-    product = Product.objects.filter(id=kwargs.get('item_id', "")).first()
-    print("request.user.profile.ebooks", request.user.profile.ebooks.all())
-    if product in request.user.profile.ebooks.all():
-        request.user.profile.ebooks[product.name][0].quantity += 1
-        messages.info(request, "Added one more item")
-        return redirect(reverse('product-list'))
-    
-    order_item, status = OrderItem.objects.get_or_create(product=product)
-
-    user_order, status = Order.objects.get_or_create(owner=user_profile)
-    user_order.items.add(order_item)
-    if status:
-        user_order.ref_code = generate_order_id()
-        user_order.save()
-    user_profile.ebooks.add(product)
-    messages.info(request, "item added to cart")
-    
-    return redirect(reverse('product-list'))
 
 @login_required
 def delete_from_cart(request, item_id):
