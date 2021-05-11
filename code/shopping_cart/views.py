@@ -25,6 +25,11 @@ def cart_add(request, item_id):
 
 def cart_detail(request):
     cart = Cart(request)
+    for item in cart:
+        item['update_quantity_form'] = CartAddProductForm(
+            initial={"quantity": item['quantity'],
+                     'update': True}
+        )
     return render(request, 'shopping_cart/detail.html', {'cart': cart})
     
 # Create your views here.
