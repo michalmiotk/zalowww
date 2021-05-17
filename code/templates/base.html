@@ -50,9 +50,19 @@
         <li class="nav-item">
             <a class="nav-link" href="/logout/">Wyloguj</a>
         </li>
+        <!--a class="nav-link" href="/cart_detail/">Koszyk</a-->
         <li class="nav-item">
-            <a class="nav-link" href="/cart_detail/">Koszyk</a>
-            jest pusty
+            {% with total_items=cart|length %}
+                {% if cart|length > 0 %}
+                    Koszyk:
+                    <a class="nav-link" href="/cart_detail/">
+                        {{ total_items }} produkt {{ total_items|pluralize:"y" }},
+                        {{ cart.get_total_price }} zł
+                    </a>
+                {% else %}
+                    Koszyk jest pusty.
+                {% endif %}
+            {% endwith %}
         </li>
         </ul>
     </div>

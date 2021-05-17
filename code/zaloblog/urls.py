@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf.urls import url
 from django.urls import path
 from home.views import home_view, read_article
 from about.views import about_view
@@ -31,7 +32,7 @@ urlpatterns = [
     path('<str:slug>', read_article),
     path('pricing/', pricing_view),
     path('about/', about_view),
-    path(r'cart_detail/', cart_detail, name='cart_detail'),
+    url(r'^cart_detail/', cart_detail, name='cart_detail'),
     path(r'add-to-cart/(?P<item_id>\d+)/', cart_add, name="cart_add"),
     path(r'^order-summary/$', order_details, name="order_summary"),
     #path(r'^success/$', success, name='purchase_success'),
@@ -42,6 +43,7 @@ urlpatterns = [
     path(r'^payment/(?P<order_id>[-\w]+/)$', payment, name="process_payment"),
     path('register/', register_view, name="register_view"),
     #path(r'^update-transaction/(?P<order_id>[-\w]+)/$', update_transaction_records, name='update_records'),
+    #r'^products/'
     path("logout/", my_logout, name="logout"),
 ]
 
