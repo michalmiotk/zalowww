@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from products.models import Product
-from shopping_cart.models import Order
 from shopping_cart.forms import CartAddProductForm
 # Create your views here.
 

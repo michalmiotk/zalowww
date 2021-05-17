@@ -1,8 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from products.models import Product
 from accounts.models import Profile
-from shopping_cart.models import OrderItem, Order
-from shopping_cart.extras import  generate_order_id
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.template.defaulttags import register
@@ -31,50 +29,3 @@ def cart_detail(request):
                      'update': True}
         )
     return render(request, 'shopping_cart/detail.html', {'cart': cart})
-    
-# Create your views here.
-def get_user_pending_order(request):
-    user_profile = get_object_or_404(Profile, user=request.user)
-    order = Order.objects.filter(owner=user_profile, is_ordered=False)
-    if order.exists():
-        return order[0]
-    return 0
-
-
-
-@login_required
-def delete_from_cart(request, item_id):
-    item_to_delete = OrderItem.objects.filter(pk=item_id)
-    if item_to_delete.exists():
-        item_to_delete[0].delete()
-        messages.info(request, "Item has been deleted")
-    return redirect(reverse('order_summary'))
-
-@login_required()
-def order_details(request, **kwargs):
-    existing_order = get_user_pending_order(request)
-    context = {
-        'order': existing_order
-    }
-    return render(request, 'shopping_cart/order_summary.html', context)
-
-@login_required
-def checkout(request, **kwargs):
-    context = {
-        'order' : get_user_pending_order(request)
-    }
-    return render(request, 'shopping_cart/checkout.html', context)
-
-@login_required
-def payment(request, order_id):
-    context = {
-        'order_id' : order_id,
-    }
-    return render(request, 'shopping_cart/payment.html', context)
-
-'''
-@register.TEMPLATES
-def get_item_number(dictionary, key):
-    print("wypluje", dictionary.get(key)[0].quantity)
-    return dictionary.get(key)[0].quantity
-'''
