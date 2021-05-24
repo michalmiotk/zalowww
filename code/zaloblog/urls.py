@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import url
-from django.urls import path
+from django.urls import path, include
 from home.views import home_view, read_article
 from about.views import about_view
 from pricing.views import pricing_view
@@ -38,6 +38,7 @@ urlpatterns = [
     path(r'login_machine/', login_machine),
     path('register/', register_view, name="register_view"),
     path("logout/", my_logout, name="logout"),
+    url(r'^paypal/', include('paypal.standard.ipn.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

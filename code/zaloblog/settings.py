@@ -37,13 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'paypal.standard.ipn',
+    'payment',
     'about',
     'home',
     'my_register',
     'shopping_cart',
     'products',
     'accounts',
-    'orders'
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +131,5 @@ STATIC_URL = '/static/'
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 CART_SESSION_ID = 'cart'
+PAYPAL_RECEIVER_EMAIL = 'michaszek13@tlen.pl'
+PAYPAL_TEST = True #tak bo uzywam sandboxa
