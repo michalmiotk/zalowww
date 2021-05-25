@@ -25,6 +25,8 @@ from products.urls import product_urlpatterns
 from login.views import login_gui, login_machine, my_logout
 from my_register.views import register_view
 from orders.urls import order_urlpatterns
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view, name="home"),
@@ -39,8 +41,10 @@ urlpatterns = [
     path('register/', register_view, name="register_view"),
     path("logout/", my_logout, name="logout"),
     url(r'^paypal/', include('paypal.standard.ipn.urls')),
+    url(r'^payment/', include('payment.urls',namespace='payment')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns.extend(product_urlpatterns)
 urlpatterns.extend(order_urlpatterns)
+
