@@ -12,6 +12,7 @@
                 <th>Produkt</th>
                 <th>Ilosc</th>
                 <th>Cena jednostkowa</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -21,16 +22,19 @@
                         <td>{{ product.name }}</td>
                         <td>{{ item.quantity }}</td>
                         <td>{{ item.price }}</td>
-                        <form action="{% url 'cart_add' product.id %}" method="post">
-                            {{ item.update_quantity_form.quantity }}
-                            {{ item.udpate_quantity_form.update }}
-                            <input type="submit" value="Zmień">
-                            {% csrf_token %}
-                        </form>
+                        <td>
+                            <form action="{% url 'cart_add' product.id %}" method="post">
+                                {{ item.update_quantity_form.quantity }}
+                                {{ item.update_quantity_form.update }}
+                                <input type="submit" value="Zmień">
+                                {% csrf_token %}
+                            </form>
+                        </td>
                     </tr>
                 {% endwith %}
             {% endfor %}
         </tbody>
     </table>
-    <a href="{% url "order_create" %}">Do kasy</a>
+    <!--a href="{% url "order_create" %}">Do kasy</a-->
+    <a class="btn btn-primary" href="{% url "order_create" %}" role="button">Do kasy</a>
 {% endblock %}
