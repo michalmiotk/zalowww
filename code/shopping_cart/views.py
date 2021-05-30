@@ -12,14 +12,20 @@ from shopping_cart.forms import CartAddProductForm
 
 @require_POST
 def cart_add(request, item_id):
+    print("rozpoczeto dodawanie do koszyka")
     cart = Cart(request)
+    print("no stworzono koszyk")
     product = get_object_or_404(Product, id=item_id)
+    print("wzieto produkt x")
     form = CartAddProductForm(request.POST)
+    print("utworzono formularz ddoo")
     if form.is_valid():
+        print("formularzz prawu")
         cd = form.cleaned_data
         cart.add(product=product,
             quantity=cd['quantity'],
             update_quantity=cd['update'])
+    print("teraz redirect")
     return redirect(reverse('product-list'))
 
 def cart_detail(request):
