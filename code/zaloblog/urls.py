@@ -19,7 +19,7 @@ from django.urls import path, include
 from home.views import home_view, read_article
 from about.views import about_view
 from pricing.views import pricing_view
-from shopping_cart.views import cart_add, cart_detail
+from shopping_cart.views import cart_add, cart_detail, cart_remove
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from products.urls import product_urlpatterns
 from login.views import login_gui, login_machine, my_logout
@@ -36,6 +36,7 @@ urlpatterns = [
     path('about/', about_view),
     url(r'^cart_detail/', cart_detail, name='cart_detail'),
     path(r'add-to-cart/(?P<item_id>\d+)/', cart_add, name="cart_add"),
+    url(r'^cart_remove/(?P<product_id>\d+)/$',cart_remove, name="cart_remove"),
     path(r'login/',login_gui),
     path(r'login_machine/', login_machine),
     path('register/', register_view, name="register_view"),

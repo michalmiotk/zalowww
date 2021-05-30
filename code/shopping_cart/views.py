@@ -1,3 +1,4 @@
+from math import prod
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from products.models import Product
 from accounts.models import Profile
@@ -29,3 +30,10 @@ def cart_detail(request):
                      'update': True}
         )
     return render(request, 'shopping_cart/detail.html', {'cart': cart})
+
+def cart_remove(request, product_id):
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=product_id)
+    cart.remove(product)
+    return redirect(cart_detail)
+    

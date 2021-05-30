@@ -13,6 +13,7 @@
                 <th>Ilosc</th>
                 <th>Cena jednostkowa</th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,7 @@
                                 {% csrf_token %}
                             </form>
                         </td>
+                        <td><a class="btn btn-primary" href="{% url "cart_remove" product.id %}" role="button">Usuń</a></td>
                     </tr>
                 {% endwith %}
             {% endfor %}
