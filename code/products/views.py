@@ -5,7 +5,6 @@ from shopping_cart.forms import CartAddProductForm
 
 def product_list(request):
     object_list = Product.objects.all()
-    print("lista produktow to", object_list)
     cart_product_form = CartAddProductForm()
     context = {
         'object_list': object_list,

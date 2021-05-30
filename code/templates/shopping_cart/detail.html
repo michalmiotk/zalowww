@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}
     Koszyk na zakupy
 {% endblock %}
@@ -10,6 +10,7 @@
         <thead>
             <tr>
                 <th>Produkt</th>
+                <th>Zdjęcie</th>
                 <th>Ilosc</th>
                 <th>Cena jednostkowa</th>
                 <th></th>
@@ -21,6 +22,12 @@
                 {% with product=item.product %}
                     <tr>
                         <td>{{ product.name }}</td>
+                        <td>
+                            <a href="{{ product.get_absolute_url }}">
+                                <img width="150" height="150" src="{% if product.image %}{{ product.image.url }}{% else %}
+                                {% static "img/noimg.png" %}{% endif %}">
+                            </a>
+                        </td>
                         <td>{{ item.quantity }}</td>
                         <td>{{ item.price }}</td>
                         <td>
