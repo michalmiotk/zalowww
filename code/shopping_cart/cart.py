@@ -15,9 +15,11 @@ class Cart(object):
         '''
         Dodanie produktu do koszyka lub zmiana jego ilości
         '''
+        print("id produktu to")
         product_id = str(product.id)
+        print("dokładnie", product_id)
         if product_id not in self.cart:
-            self.cart[product_id] = {'quantity':0, 'price':product.price}
+            self.cart[product_id] = {'quantity':0, 'price': str(product.price)}
 
         if update_quantity:
             self.cart[product_id]['quantity'] = quantity

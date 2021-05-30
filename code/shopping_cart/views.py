@@ -1,9 +1,8 @@
 from math import prod
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from products.models import Product
-from accounts.models import Profile
+
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
 from django.template.defaulttags import register
 
 from django.views.decorators.http import require_POST
@@ -12,9 +11,9 @@ from shopping_cart.forms import CartAddProductForm
 
 @require_POST
 def cart_add(request, item_id):
-    print("rozpoczeto dodawanie do koszyka")
+    print("rozpoczeto dodawanie do koszykaja")
     cart = Cart(request)
-    print("no stworzono koszyk")
+    print("no stworzono koszyka")
     product = get_object_or_404(Product, id=item_id)
     print("wzieto produkt x")
     form = CartAddProductForm(request.POST)
