@@ -1,26 +1,17 @@
 {% extends 'base.html' %}
 
 {% block page_content %}
-    <div class="row">
-        {% for object in object_list %}
-            <div class="col-sm-3">
-                <p>{{object.name}}</p>
-                <p>Price: {{ object.price }}</p>
-                <!-- 
-                {% if not user  %}
-                    Zaloguj się aby dodać przedmiot do koszyka
-                {% endif %}
-                {% if user and user.profile and object in user.profile.ebooks.all %}
-                        W koszyku {{ user.profile.ebooks.all }}sztuk 
-                {% endif %}
-                <a href="{% url 'cart_add' object.id %}" class="btn btn-warning">Add to Cart</a>
-                -->
-                <form action="{% url 'cart_add' object.id %}" method="post">
-                    {{ cart_product_form }}
-                    {% csrf_token %}
-                    <input type="submit" value="Dodaj do koszyka">
-                </form>
-            </div>
-        {% endfor %}
-    </div>
+<div class="row">
+    {% for object in object_list %}
+        <div class="col-sm-3">
+            <p>{{object.name}}</p>
+            <p>Price: {{ object.price }}</p>
+            <form action="{% url 'cart_add' object.id %}" method="post">
+                {{ cart_product_form }}
+                {% csrf_token %}
+                <input type="submit" value="Dodaj do koszyka">
+            </form>
+        </div>
+    {% endfor %}
+</div>
 {% endblock  %}

@@ -46,9 +46,12 @@ urlpatterns = [
     url(r'^paypal/', include('paypal.standard.ipn.urls')),
     url(r'^payment/', include('payment.urls',namespace='payment')),
 ]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns.extend(product_urlpatterns)
 urlpatterns.extend(order_urlpatterns)
+#to ponizej musi byc ladowane jako ostatnie bo inaczej jest problem ze nie widzi tego co jest ponizej
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 

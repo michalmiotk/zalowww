@@ -23,8 +23,8 @@
                     <tr>
                         <td>{{ product.name }}</td>
                         <td>
-                            <a href="{{ product.get_absolute_url }}">
-                                <img width="150" height="150" src="{% if product.image %}{{ product.image.url }}{% else %}
+                            <a href="{% url "product-detail" product.id %}">
+                                <img width="70" height="70" src="{% if product.image %}{{ product.image.url }}{% else %}
                                 {% static "img/noimg.png" %}{% endif %}">
                             </a>
                         </td>
