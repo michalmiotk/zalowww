@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load static %}
 {% block page_content %}
     <div class="row">
@@ -13,7 +14,7 @@
                 <form action="{% url 'cart_add' product.id %}" method="post">
                     {{ cart_product_form }}
                     {% csrf_token %}
-                    <input type="submit" value="Dodaj do koszyka">
+                    <input type="submit" value="{% trans "Dodaj do koszyka" %}">
                 </form>
             </div>
         {% endfor %}

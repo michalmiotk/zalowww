@@ -21,6 +21,7 @@
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="/">
         zaloblog
+        {% load i18n %}
         {% load static %}
         <img src="{% static 'base/cross.png' %}" alt="cross image" width="30" height="30"/>
     </a>
@@ -54,13 +55,14 @@
         <li class="nav-item">
             {% with total_items=cart|length %}
                 {% if cart|length > 0 %}
-                    Koszyk:
+                    {% trans "Koszyk:" %}
                     <a class="nav-link" href="/cart_detail/">
-                        {{ total_items }} produkt {{ total_items|pluralize:"y" }},
-                        {{ cart.get_total_price }} zł
+                        {% blocktrans with total_items_plural=total_items|pluralize:"y" total_price=cart.get_total_price %}
+                        {{ total_items }} item{{ total_items_plural }},{{ total_price }} zł
+                    {% endblocktrans %}
                     </a>
                 {% else %}
-                    Koszyk jest pusty.
+                    {% trans "Koszyk jest pusty." %}
                 {% endif %}
             {% endwith %}
         </li>
