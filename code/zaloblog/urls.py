@@ -27,7 +27,7 @@ from products.urls import product_urlpatterns
 from login.views import login_gui, login_machine, my_logout
 from my_register.views import register_view
 from orders.urls import order_urlpatterns
-
+from coupons.urls import coupon_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -50,6 +50,7 @@ urlpatterns = [
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns.extend(product_urlpatterns)
 urlpatterns.extend(order_urlpatterns)
+urlpatterns.extend(coupon_urlpatterns)
 #to ponizej musi byc ladowane jako ostatnie bo inaczej jest problem ze nie widzi tego co jest ponizej
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

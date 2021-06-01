@@ -8,6 +8,7 @@ from django.template.defaulttags import register
 from django.views.decorators.http import require_POST
 from shopping_cart.cart import Cart
 from shopping_cart.forms import CartAddProductForm
+from coupons.forms import CouponApplyForm
 
 @require_POST
 def cart_add(request, item_id):
@@ -28,7 +29,8 @@ def cart_detail(request):
             initial={"quantity": item['quantity'],
                      'update': True}
         )
-    return render(request, 'shopping_cart/detail.html', {'cart': cart})
+    coupon_apply_form = CouponApplyForm()
+    return render(request, 'shopping_cart/detail.html', {'cart': cart, 'coupon_apply_form': coupon_apply_form})
 
 def cart_remove(request, product_id):
     cart = Cart(request)
