@@ -1,0 +1,79 @@
+BBBBBBB BBBBBBBBBBB
+BBBB BBBBBB
+BBBBB BBBBB
+    XXXXXX XX XXXXXX
+BBBBBBBB
+
+BBBBB BBBBBBBBBBBB
+    XXXXXXXXXX XX XXXXXXXXXXX
+    XXXXXX XXXXXXXXXXXXX
+        XXXXXXX
+            XXXX
+                XXXXXXXXXXXXXXXX
+                XXXXXXXXXXXXXXXX
+                XXXXXXXXXXXXXX
+                XXXXXXXX XXXXXXXXXXXXXXXX
+                XXXXXXXXX
+                XXXXXXXXX
+            XXXXX
+        XXXXXXXX
+        XXXXXXX
+            BBB BBBB BB BBBB
+                BBBB BBBBBBBBBBBBBBBBBBBB
+                    XXXX
+                        XXXXXXXXX
+                        XXXX
+                            XX XXXXXXBBB BBBBBBBBBBBBBBBB BBBBBBBBBBXX
+                                XXXX XXXXXXXXXX XXXXXXXXXXX XXXXXBB BBBBBBBBBBBBBBBBB
+                                BBBBBB BBBBBBBBBBBBBBBBBBBBXX
+                            XXXX
+                        XXXXX
+                        XXXXXXXXX
+                        XXXXXXXXX
+                        XXXX
+                            XXXXX XXXXXXXXBBB BBBBBBBBBB BBBBBBBBBBX XXXXXXXXXXXXXX
+                                
+                                
+                                XXXXXX XXXXXXXXXXXXX XXXXXXXXXXXXXX
+                                BBBBBBBBBB
+                            XXXXXXX
+                        XXXXX
+                        XXXXXX XXXXXXXXXX XXXXXXXXXXXX XXXXXXBBB BBBBBBBBBBBBB BBBBBBBBBBX XXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXX
+                BBBBBBB
+            BBBBBB
+        XXXXXXXX
+    XXXXXXXX
+    XXXXXXXX XXXXXXXXXXXXX
+    XXXXX XXXXXXXXBBB BBBBBBBBBBBBBBX XXXXXXXXXXXXXX
+        
+        XXXXXX XXXXXXXXXXXXX XXXXXXXXXXXXXXXXX
+        BBBBBBBBBB
+    XXXXXXX
+    BB BBBBBBBBBBB
+        XXX XXXXXXXXXXXXXX
+            XXXXXXXXXXX XXXXXXXXXXXXXX
+            XXX XXXXXXXXXXXXXXXXX
+            XXX XXXXXXXXXXXX XXXXXXX
+        XXXXX
+        XXXX
+            XXXX
+                XXXXX XX
+                XX XXXXXXX
+            XXXXX
+            XXX XXXXXXXXXXXXXXXXX
+            XXX XXXXXXXXXX XXXXX
+                X FFFFFFFFFFFFFFF XX
+            XXXXX
+        XXXXX
+    BBBBB
+    XXX XXXXXXXXXXXXXX
+        XXXXXXXXX XX XXXXXXXXXXXX
+        XXX XXXXXXXXXXXXXXXXX
+        XXX XXXXXXXXXXXX
+            FFFFFFFFFFFFFFF
+        XXXXX
+    XXXXX
+    XXXXX XXXXXXBBB BBBBBBBBBBBBBBXXXX XXXXXXXXXX
+    XX XXXXXXXXXX XXXXXXXXXXXX XXXXXXBBB BBBBBBBBBBBBBBX XXXXXXXXXXXXXXXX XXXXXXXX
+BBBBBBBB
