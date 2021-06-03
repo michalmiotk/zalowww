@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
+    {% load i18n %}
+    {% load static %}
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,56 +21,68 @@
         {% endfor %}
     {% endif %}
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="/">
-        zaloblog
-        {% load i18n %}
-        {% load static %}
-        <img src="{% static 'base/cross.png' %}" alt="cross image" width="30" height="30"/>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>    
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/about/">O nas</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/pricing/">Cennik</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/products/">Produkty</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/login/">Zaloguj</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/register/">Zarejestruj</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/logout/">Wyloguj</a>
-        </li>
-        <!--a class="nav-link" href="/cart_detail/">Koszyk</a-->
-        <li class="nav-item">
-            {% with total_items=cart|length %}
-                {% if cart|length > 0 %}
-                    {% trans "Koszyk:" %}
-                    <a class="nav-link" href="/cart_detail/">
-                        {% blocktrans with total_items_plural=total_items|pluralize:"y" total_price=cart.get_total_price %}
-                        {{ total_items }} item{{ total_items_plural }},{{ total_price }} zł
-                    {% endblocktrans %}
-                    </a>
-                {% else %}
-                    {% trans "Koszyk jest pusty." %}
-                {% endif %}
-            {% endwith %}
-        </li>
-        </ul>
-    </div>
-</nav>
+        <a class="navbar-brand" href="/">
+            <img src="{% static 'base/cross.png' %}" alt="cross image" width="30" height="30"/>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about/">O nas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pricing/">Cennik</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/products/">Produkty</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login/">Zaloguj</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register/">Zarejestruj</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout/">Wyloguj</a>
+                </li>
+                <li class="nav-item">
+                    {% with total_items=cart|length %}
+                        {% if cart|length > 0 %}
+                            {% trans "Koszyk:" %}
+                            <a class="nav-link" href="/cart_detail/">
+                                {% blocktrans with total_items_plural=total_items|pluralize:"y" total_price=cart.get_total_price %}
+                                {{ total_items }} item{{ total_items_plural }},{{ total_price }} zł
+                            {% endblocktrans %}
+                            </a>
+                        {% else %}
+                            {% trans "Koszyk jest pusty." %}
+                        {% endif %}
+                    {% endwith %}
+                </li>
+                <li>
+                    <a href="/" class="logo">{% trans "Strona ZALO" %}</a>
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    <ul>
+                        {% for language in languages %}
+                            <li class="xd" >
+                                <a href="/{{ language.code }}/" style="color: #8ebf42" {% if language.code == LANGUAGE_CODE %} class="selected"{% endif %}>
+                                {{ language.name_local }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    
+                </li>
+            </ul>
+        </div>
+    </nav>
 {% block page_content %}
 
 {% endblock %}

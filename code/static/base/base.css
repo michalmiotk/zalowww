@@ -1,3 +1,6 @@
 body {
     background: #888888;
 }
+li.xd { 
+    display:inline;
+} 
