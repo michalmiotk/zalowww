@@ -146,3 +146,5 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 CART_SESSION_ID = 'cart'
 PAYPAL_RECEIVER_EMAIL = 'michaszek13@tlen.pl'
 PAYPAL_TEST = True #tak bo uzywam sandboxa
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

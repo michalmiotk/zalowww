@@ -5,6 +5,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 
 from .models import OrderItem, Order
 from .forms import OrderCreateForm
+from .tasks import order_created
 from shopping_cart.cart import Cart
 
 @staff_member_required
@@ -31,6 +32,7 @@ def order_create(request):
                     quantity=item['quantity'])
             request.session['order_id'] = order.id
             cart.clear()
+            order_created.delay(order.id)
         return redirect(reverse('payment:process'))
     else:
         form = OrderCreateForm()
