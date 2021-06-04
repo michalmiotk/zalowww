@@ -147,4 +147,10 @@ CART_SESSION_ID = 'cart'
 PAYPAL_RECEIVER_EMAIL = 'michaszek13@tlen.pl'
 PAYPAL_TEST = True #tak bo uzywam sandboxa
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "goprestigo@gmail.com"
+EMAIL_HOST_PASSWORD = "djangodjango"
+

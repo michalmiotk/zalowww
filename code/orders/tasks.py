@@ -15,7 +15,7 @@ def order_created(order_id):
 
     mail_sent = send_mail(subject,
                 message,
-                'admin@myshop.com',
+                'goprestigo@gmail.com',
                 [order.email])
 
     return mail_sent
